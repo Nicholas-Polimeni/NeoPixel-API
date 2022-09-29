@@ -1,0 +1,463 @@
+-- Altera Memory Initialization File (MIF)
+
+DEPTH = 2048;
+WIDTH = 16;
+
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+
+CONTENT
+  BEGIN
+    [000..7FF] : 0000;  -- Default to NOP
+
+           000 : B800;  -- 		LOADI 0 ;; clear all the pixels at the start
+           001 : 98B3;  -- 		OUT SET_ALL_PXLS
+           002 : 80CC;  -- 		CALL wait1
+           003 : 9000;  -- checkx:	IN Switches
+           004 : 49AE;  -- 		AND ONE
+           005 : 4007;  -- 		JZERO checkb
+           006 : 808F;  -- 		CALL xmas
+           007 : 9000;  -- checkb: IN Switches
+           008 : 49AF;  -- 		AND TWO
+           009 : 400B;  -- 		JZERO checkc
+           00A : 8020;  -- 		CALL smile
+           00B : 9000;  -- checkc: IN Switches
+           00C : 49B0;  -- 		AND THREE
+           00D : 400F;  -- 		JZERO checkd
+           00E : 80D6;  -- 		CALL set24
+           00F : 9000;  -- checkd: IN Switches
+           010 : 49B1;  --         AND FOUR
+           011 : 4013;  -- 		JZERO checke
+           012 : 8095;  -- 		CALL flag
+           013 : 9000;  -- checke: IN Switches
+           014 : 49B2;  -- 		AND FIVE
+           015 : 4017;  -- 		JZERO checkf
+           016 : 8156;  -- 		CALL Set_All_F
+           017 : 9000;  -- checkf: IN Switches
+           018 : 49B3;  -- 		AND SIX
+           019 : 401B;  -- 		JZERO checkg
+           01A : 812D;  -- 		CALL auto	
+           01B : 9000;  -- checkg: IN Switches
+           01C : 49B4;  -- 		AND SEVEN
+           01D : 401F;  -- 		JZERO end
+           01E : 8176;  -- 		CALL flr
+           01F : 2803;  -- end: 	JUMP checkx
+           020 : B805;  -- smile: LOADI 5
+           021 : 98B2;  -- 	   OUT PXL_M
+           022 : 98B4;  -- 	   OUT REFRESH
+           023 : 09B6;  -- 	   LOAD BLUE
+           024 : 98B3;  -- 	   OUT SET_ALL_PXLS
+           025 : 80CC;  -- 	   CALL wait1
+           026 : B82D;  -- 	   LOADI 45
+           027 : 98B0;  -- 	   OUT PXL_A
+           028 : 09B7;  -- 	   LOAD WHITE
+           029 : 98B1;  -- 	   OUT PXL_D
+           02A : 09B7;  -- 	   LOAD WHITE
+           02B : 98B1;  -- 	   OUT PXL_D
+           02C : 09B7;  -- 	   LOAD WHITE
+           02D : 98B1;  -- 	   OUT PXL_D
+           02E : 09B7;  -- 	   LOAD WHITE
+           02F : 98B1;  -- 	   OUT PXL_D
+           030 : B84E;  -- 	   LOADI 78
+           031 : 98B0;  -- 	   OUT PXL_A
+           032 : 09B7;  -- 	   LOAD WHITE
+           033 : 98B1;  -- 	   OUT PXL_D
+           034 : B853;  -- 	   LOADI 83
+           035 : 98B0;  -- 	   OUT PXL_A
+           036 : 09B7;  -- 	   LOAD WHITE
+           037 : 98B1;  -- 	   OUT PXL_D
+           038 : B88F;  -- 	   LOADI 143
+           039 : 98B0;  -- 	   OUT PXL_A
+           03A : 09B7;  -- 	   LOAD WHITE
+           03B : 98B1;  -- 	   OUT PXL_D
+           03C : B892;  -- 	   LOADI 146
+           03D : 98B0;  -- 	   OUT PXL_A
+           03E : 09B7;  -- 	   LOAD WHITE
+           03F : 98B1;  -- 	   OUT PXL_D
+           040 : B802;  -- 	   LOADI 2
+           041 : 98B2;  -- 	   OUT PXL_M
+           042 : B800;  -- 	   LOADI 0
+           043 : 98B0;  -- 	   OUT PXL_A
+           044 : 09B7;  -- 	   LOAD WHITE
+           045 : 98B1;  -- 	   OUT PXL_D
+           046 : 98B1;  -- 	   OUT PXL_D
+           047 : B81F;  -- 	   LOADI 31
+           048 : 98B0;  -- 	   OUT PXL_A
+           049 : 09B7;  -- 	   LOAD WHITE
+           04A : 98B1;  -- 	   OUT PXL_D
+           04B : 98B1;  -- 	   OUT PXL_D
+           04C : B820;  -- 	   LOADI 32
+           04D : 98B0;  -- 	   OUT PXL_A
+           04E : 09B7;  -- 	   LOAD WHITE
+           04F : 98B1;  -- 	   OUT PXL_D
+           050 : 98B1;  -- 	   OUT PXL_D
+           051 : B83F;  -- 	   LOADI 63
+           052 : 98B0;  -- 	   OUT PXL_A
+           053 : 09B7;  -- 	   LOAD WHITE
+           054 : 98B1;  -- 	   OUT PXL_D
+           055 : 98B1;  -- 	   OUT PXL_D
+           056 : B840;  -- 	   LOADI 64
+           057 : 98B0;  -- 	   OUT PXL_A
+           058 : 09B7;  -- 	   LOAD WHITE
+           059 : 98B1;  -- 	   OUT PXL_D
+           05A : 98B1;  -- 	   OUT PXL_D
+           05B : B85F;  -- 	   LOADI 95
+           05C : 98B0;  -- 	   OUT PXL_A
+           05D : 09B7;  -- 	   LOAD WHITE
+           05E : 98B1;  -- 	   OUT PXL_D
+           05F : 98B1;  -- 	   OUT PXL_D
+           060 : B860;  -- 	   LOADI 96
+           061 : 98B0;  -- 	   OUT PXL_A
+           062 : 09B7;  -- 	   LOAD WHITE
+           063 : 98B1;  -- 	   OUT PXL_D
+           064 : 98B1;  -- 	   OUT PXL_D
+           065 : B87F;  -- 	   LOADI 127
+           066 : 98B0;  -- 	   OUT PXL_A
+           067 : 09B7;  -- 	   LOAD WHITE
+           068 : 98B1;  -- 	   OUT PXL_D
+           069 : 98B1;  -- 	   OUT PXL_D
+           06A : B880;  -- 	   LOADI 128
+           06B : 98B0;  -- 	   OUT PXL_A
+           06C : 09B7;  -- 	   LOAD WHITE
+           06D : 98B1;  -- 	   OUT PXL_D
+           06E : 98B1;  -- 	   OUT PXL_D
+           06F : B89F;  -- 	   LOADI 159
+           070 : 98B0;  -- 	   OUT PXL_A
+           071 : 09B7;  -- 	   LOAD WHITE
+           072 : 98B1;  -- 	   OUT PXL_D
+           073 : 98B1;  -- 	   OUT PXL_D
+           074 : B8A0;  -- 	   LOADI 160
+           075 : 98B0;  -- 	   OUT PXL_A
+           076 : 09B7;  -- 	   LOAD WHITE
+           077 : 98B1;  -- 	   OUT PXL_D
+           078 : 98B1;  -- 	   OUT PXL_D
+           079 : B8BF;  -- 	   LOADI 191
+           07A : 98B0;  -- 	   OUT PXL_A
+           07B : 09B7;  -- 	   LOAD WHITE
+           07C : 98B1;  -- 	   OUT PXL_D
+           07D : 98B1;  -- 	   OUT PXL_D   
+           07E : 98B4;  -- 	   OUT REFRESH
+           07F : 80D1;  -- 	   CALL wait10
+           080 : 80D1;  -- 	   CALL wait10
+           081 : 80D1;  -- 	   CALL wait10
+           082 : B808;  -- 	   LOADI 8
+           083 : 98B2;  -- 	   OUT PXL_M
+           084 : 80D1;  -- 	   CALL wait10
+           085 : 80D1;  -- 	   CALL wait10
+           086 : 98B4;  -- 	   OUT REFRESH
+           087 : 80D1;  -- 	   CALL wait10
+           088 : 80D1;  -- 	   CALL wait10
+           089 : 80D1;  -- 	   CALL wait10
+           08A : 98B4;  -- 	   OUT REFRESH
+           08B : 80C4;  -- 		CALL check0 ;; wait for all switches to be down before being done
+           08C : 80C8;  -- 		CALL clear ;; clear pixels
+           08D : 80CC;  -- 		CALL wait1 ;; wait a little longer for set all to be done
+           08E : 8800;  -- 		RETURN
+           08F : B807;  -- xmas:   LOADI 7 ; turn on xmas lights mode
+           090 : 98B2;  -- 		OUT PXL_M
+           091 : 80C4;  -- 		CALL check0 ;; wait for all switches to be down before being done
+           092 : 80C8;  -- 		CALL clear ;; clear pixels
+           093 : 80CC;  -- 		CALL wait1 ;; wait a little longer for set all to be done
+           094 : 8800;  -- 		RETURN
+           095 : B804;  -- flag:  LOADI 4
+           096 : 98B2;  --        OUT PXL_M
+           097 : 09B8;  -- 	   LOAD RED
+           098 : 98B3;  -- 	   OUT SET_ALL_PXLS ;; set everything to red
+           099 : 80CC;  -- 	   CALL wait1
+           09A : B800;  -- 	   LOADI 0 ;; set white line
+           09B : 98B0;  -- 	   OUT PXL_A
+           09C : B820;  -- 	   LOADI 32
+           09D : 98B8;  -- 	   OUT PXL_C
+           09E : 09B7;  -- 	   LOAD WHITE 
+           09F : 98B1;  -- 	   OUT PXL_D
+           0A0 : 80CC;  -- 	   CALL wait1
+           0A1 : B840;  -- 	   LOADI 64 ;; set white line
+           0A2 : 98B0;  -- 	   OUT PXL_A
+           0A3 : B820;  -- 	   LOADI 32
+           0A4 : 98B8;  -- 	   OUT PXL_C
+           0A5 : 09B7;  -- 	   LOAD WHITE 
+           0A6 : 98B1;  -- 	   OUT PXL_D
+           0A7 : 80CC;  -- 	   CALL wait1
+           0A8 : B880;  -- 	   LOADI 128 ;; set white line
+           0A9 : 98B0;  -- 	   OUT PXL_A
+           0AA : B820;  -- 	   LOADI 32
+           0AB : 98B8;  -- 	   OUT PXL_C
+           0AC : 09B7;  -- 	   LOAD WHITE 
+           0AD : 98B1;  -- 	   OUT PXL_D
+           0AE : 80CC;  -- 	   CALL wait1
+           0AF : 09B6;  -- 	   LOAD BLUE
+           0B0 : 98B1;  -- 	   OUT PXL_D
+           0B1 : 80CC;  -- 	   CALL wait1
+           0B2 : B860;  -- 	   LOADI 96
+           0B3 : 98B0;  -- 	   OUT PXL_A
+           0B4 : B80F;  -- 	   LOADI 15
+           0B5 : 98B8;  -- 	   OUT PXL_C
+           0B6 : 09B6;  -- 	   LOAD BLUE
+           0B7 : 98B1;  -- 	   OUT PXL_D
+           0B8 : 80CC;  -- 	   CALL wait1
+           0B9 : B891;  -- 	   LOADI 145
+           0BA : 98B0;  -- 	   OUT PXL_A
+           0BB : B81E;  -- 	   LOADI 30
+           0BC : 98B8;  -- 	   OUT PXL_C
+           0BD : 09B6;  -- 	   LOAD BLUE
+           0BE : 98B1;  -- 	   OUT PXL_D
+           0BF : 80CC;  -- 	   CALL wait1
+           0C0 : 80C4;  -- 	   CALL check0 ;; wait for all switches to be down before being done
+           0C1 : 80C8;  -- 	   CALL clear ;; clear pixels
+           0C2 : 80CC;  -- 	   CALL wait1 ;; wait a little longer for set all to be done
+           0C3 : 8800;  -- 	   RETURN
+           0C4 : 9000;  -- check0: IN Switches
+           0C5 : 30C4;  -- 		JNEG check0
+           0C6 : 38C4;  -- 		JPOS check0
+           0C7 : 8800;  -- 		RETURN
+           0C8 : B800;  -- clear: LOADI 0
+           0C9 : 98B2;  --        OUT PXL_M
+           0CA : 98B3;  -- 	   OUT SET_ALL_PXLS
+           0CB : 8800;  -- 	   RETURN
+           0CC : 9802;  -- wait1: OUT TIMER
+           0CD : 9002;  -- wait1j: IN  TIMER
+           0CE : 21AE;  -- 	   SUB ONE
+           0CF : 30CD;  -- 	   JNEG wait1j
+           0D0 : 8800;  -- 	   RETURN
+           0D1 : 9802;  -- wait10: OUT TIMER
+           0D2 : 9002;  -- wait10j: IN  TIMER
+           0D3 : 21AC;  -- 	   SUB Ten
+           0D4 : 30D2;  -- 	   JNEG wait10j
+           0D5 : 8800;  -- 	   RETURN
+           0D6 : B802;  -- set24: LOADI 2 ; set mode
+           0D7 : 98B2;  -- 	   OUT PXL_M
+           0D8 : 09B5;  -- 	   LOAD set24A
+           0D9 : 98B0;  -- 	   OUT PXL_A
+           0DA : 09B5;  -- 	   LOAD set24A
+           0DB : 6801;  -- 	   ADDI 1
+           0DC : 11B5;  -- 	   STORE set24A
+           0DD : B801;  -- 	   LOADI 1
+           0DE : 98B1;  -- 	   OUT PXL_D
+           0DF : B800;  -- 	   LOADI 0
+           0E0 : 98B1;  -- 	   OUT PXL_D
+           0E1 : 09B5;  -- 	   LOAD set24A
+           0E2 : 6FA0;  -- 	   ADDI -96
+           0E3 : 30D8;  -- 	   JNEG set24Loop1
+           0E4 : B800;  -- 	   LOADI 0
+           0E5 : 11B5;  -- 	   STORE set24A
+           0E6 : B804;  -- 	   LOADI 4
+           0E7 : 98B2;  -- 	   OUT PXL_M
+           0E8 : B861;  -- 	   LOADI 97
+           0E9 : 98B0;  -- 	   OUT PXL_A
+           0EA : B860;  -- 	   LOADI 96
+           0EB : 98B8;  -- 	   OUT PXL_C
+           0EC : B820;  -- 	   LOADI 32
+           0ED : 98B1;  -- 	   OUT PXL_D
+           0EE : 80D1;  -- 	   CALL wait10
+           0EF : 80D1;  -- 	   CALL wait10
+           0F0 : 80D1;  -- 	   CALL wait10
+           0F1 : 80C8;  -- 	   CALL clear
+           0F2 : 80CC;  -- 	   CALL wait1
+           0F3 : 80D1;  -- 	   CALL wait10
+           0F4 : B802;  -- 	   LOADI 2 ; set mode
+           0F5 : 98B2;  -- 	   OUT PXL_M
+           0F6 : 09B5;  -- 	   LOAD set24A
+           0F7 : 98B0;  -- 	   OUT PXL_A
+           0F8 : 09B5;  -- 	   LOAD set24A
+           0F9 : 6801;  -- 	   ADDI 1
+           0FA : 11B5;  -- 	   STORE set24A
+           0FB : B800;  -- 	   LOADI 0
+           0FC : 98B1;  -- 	   OUT PXL_D
+           0FD : B801;  -- 	   LOADI 1
+           0FE : 98B1;  -- 	   OUT PXL_D
+           0FF : 09B5;  -- 	   LOAD set24A
+           100 : 6FA0;  -- 	   ADDI -96
+           101 : 30F6;  -- 	   JNEG set24Loop2
+           102 : B800;  -- 	   LOADI 0
+           103 : 11B5;  -- 	   STORE set24A
+           104 : B804;  -- 	   LOADI 4
+           105 : 98B2;  -- 	   OUT PXL_M
+           106 : B861;  -- 	   LOADI 97
+           107 : 98B0;  -- 	   OUT PXL_A
+           108 : B801;  -- 	   LOADI 1
+           109 : 98B1;  -- 	   OUT PXL_D
+           10A : 80D1;  -- 	   CALL wait10
+           10B : 80D1;  -- 	   CALL wait10
+           10C : 80D1;  -- 	   CALL wait10
+           10D : 80C8;  -- 	   CALL clear
+           10E : 80CC;  -- 	   CALL wait1
+           10F : 80D1;  -- 	   CALL wait10
+           110 : B802;  -- 	   LOADI 2 ; set mode
+           111 : 98B2;  -- 	   OUT PXL_M
+           112 : 09B5;  -- 	   LOAD set24A
+           113 : 98B0;  -- 	   OUT PXL_A
+           114 : 09B5;  -- 	   LOAD set24A
+           115 : 6801;  -- 	   ADDI 1
+           116 : 11B5;  -- 	   STORE set24A
+           117 : B900;  -- 	   LOADI 256
+           118 : 98B1;  -- 	   OUT PXL_D
+           119 : B800;  -- 	   LOADI 0
+           11A : 98B1;  -- 	   OUT PXL_D
+           11B : 09B5;  -- 	   LOAD set24A
+           11C : 6FA0;  -- 	   ADDI -96
+           11D : 3112;  -- 	   JNEG set24Loop3
+           11E : B800;  -- 	   LOADI 0
+           11F : 11B5;  -- 	   STORE set24A
+           120 : B804;  -- 	   LOADI 4
+           121 : 98B2;  -- 	   OUT PXL_M
+           122 : B861;  -- 	   LOADI 97
+           123 : 98B0;  -- 	   OUT PXL_A
+           124 : 09B9;  -- 	   LOAD Light_RED
+           125 : 98B1;  -- 	   OUT PXL_D
+           126 : 80D1;  -- 	   CALL wait10
+           127 : 80D1;  -- 	   CALL wait10
+           128 : 80D1;  -- 	   CALL wait10
+           129 : 80C4;  -- 	   CALL check0
+           12A : 80C8;  -- 	   CALL clear
+           12B : 80CC;  -- 	   CALL wait1
+           12C : 8800;  -- 	   RETURN
+           12D : B805;  -- auto: LOADI 5
+           12E : 98B2;  -- 	  OUT PXL_M
+           12F : B800;  -- 	  LOADI 0
+           130 : 98B0;  -- 	  OUT PXL_A
+           131 : 0955;  -- 			LOAD autoc
+           132 : 414F;  -- 			JZERO autodone
+           133 : 09BA;  -- 			LOAD BOW1
+           134 : 98B1;  -- 			OUT PXL_D
+           135 : 80CC;  -- 			CALL wait1
+           136 : 09BB;  -- 			LOAD BOW2
+           137 : 98B1;  -- 			OUT PXL_D
+           138 : 80CC;  -- 			CALL wait1
+           139 : 09BC;  -- 			LOAD BOW3
+           13A : 98B1;  -- 			OUT PXL_D
+           13B : 80CC;  -- 			CALL wait1
+           13C : 09BD;  -- 			LOAD BOW4
+           13D : 98B1;  -- 			OUT PXL_D
+           13E : 80CC;  -- 			CALL wait1
+           13F : 09BE;  -- 			LOAD BOW5
+           140 : 98B1;  -- 			OUT PXL_D
+           141 : 80CC;  -- 			CALL wait1
+           142 : 09BF;  -- 			LOAD BOW6
+           143 : 98B1;  -- 			OUT PXL_D
+           144 : 80CC;  -- 			CALL wait1
+           145 : 09C0;  -- 			LOAD BOW7
+           146 : 98B1;  -- 			OUT PXL_D
+           147 : 80CC;  -- 			CALL wait1
+           148 : 09C1;  -- 			LOAD BOW8
+           149 : 98B1;  -- 			OUT PXL_D
+           14A : 80CC;  -- 			CALL wait1
+           14B : 0955;  -- 			LOAD autoc
+           14C : 6FFF;  -- 			ADDI -1
+           14D : 1155;  -- 			STORE autoc
+           14E : 2931;  -- 			JUMP autoloop
+           14F : B808;  -- 	   LOADI 8
+           150 : 1155;  -- 	   STORE autoc
+           151 : 80C4;  -- 	   CALL check0
+           152 : 80C8;  -- 	   CALL clear
+           153 : 80CC;  -- 	   CALL wait1
+           154 : 8800;  -- 	   RETURN
+           155 : 0020;  -- 	autoc:  DW 32
+           156 : 09B6;  -- 		LOAD BLUE
+           157 : 98B3;  -- 		OUT  SET_ALL_PXLS
+           158 : 80D1;  -- 		CALL wait10
+           159 : 80D1;  -- 		CALL wait10
+           15A : 09B7;  -- 		LOAD WHITE
+           15B : 98B3;  -- 		OUT  SET_ALL_PXLS
+           15C : 80D1;  -- 		CALL wait10
+           15D : 80D1;  -- 		CALL wait10
+           15E : 09B8;  -- 		LOAD RED
+           15F : 98B3;  -- 		OUT  SET_ALL_PXLS
+           160 : 80D1;  -- 		CALL wait10
+           161 : 80D1;  -- 		CALL wait10
+           162 : 09BA;  -- 		LOAD BOW1
+           163 : 98B3;  -- 		OUT  SET_ALL_PXLS
+           164 : 80D1;  -- 		CALL wait10
+           165 : 80D1;  -- 		CALL wait10
+           166 : 09BB;  -- 		LOAD BOW2
+           167 : 98B3;  -- 		OUT  SET_ALL_PXLS
+           168 : 80D1;  -- 		CALL wait10
+           169 : 80D1;  -- 		CALL wait10
+           16A : 09BC;  -- 		LOAD BOW3
+           16B : 98B3;  -- 		OUT  SET_ALL_PXLS
+           16C : 80D1;  -- 		CALL wait10
+           16D : 80D1;  -- 		CALL wait10
+           16E : 09BD;  -- 		LOAD BOW4
+           16F : 98B3;  -- 		OUT  SET_ALL_PXLS
+           170 : 80D1;  -- 		CALL wait10
+           171 : 80D1;  -- 		CALL wait10
+           172 : 80C4;  -- 		CALL check0
+           173 : 80C8;  -- 	    CALL clear
+           174 : 80CC;  -- 	    CALL wait1
+           175 : 8800;  -- 		RETURN
+           176 : 98B4;  -- flr:    OUT REFRESH ;; pause screen updates
+           177 : 80CC;  -- 		CALL wait1
+           178 : 80CC;  -- 		CALL wait1
+           179 : B804;  -- 	   LOADI 4 ;; draw flag
+           17A : 98B2;  --        OUT PXL_M
+           17B : 09B8;  -- 	   LOAD RED
+           17C : 98B3;  -- 	   OUT SET_ALL_PXLS ;; set everything to red
+           17D : 80CC;  -- 	   CALL wait1
+           17E : B800;  -- 	   LOADI 0 ;; set white line
+           17F : 98B0;  -- 	   OUT PXL_A
+           180 : B820;  -- 	   LOADI 32
+           181 : 98B8;  -- 	   OUT PXL_C
+           182 : 09B7;  -- 	   LOAD WHITE 
+           183 : 98B1;  -- 	   OUT PXL_D
+           184 : 80CC;  -- 	   CALL wait1
+           185 : B840;  -- 	   LOADI 64 ;; set white line
+           186 : 98B0;  -- 	   OUT PXL_A
+           187 : B820;  -- 	   LOADI 32
+           188 : 98B8;  -- 	   OUT PXL_C
+           189 : 09B7;  -- 	   LOAD WHITE 
+           18A : 98B1;  -- 	   OUT PXL_D
+           18B : 80CC;  -- 	   CALL wait1
+           18C : B880;  -- 	   LOADI 128 ;; set white line
+           18D : 98B0;  -- 	   OUT PXL_A
+           18E : B820;  -- 	   LOADI 32
+           18F : 98B8;  -- 	   OUT PXL_C
+           190 : 09B7;  -- 	   LOAD WHITE 
+           191 : 98B1;  -- 	   OUT PXL_D
+           192 : 80CC;  -- 	   CALL wait1
+           193 : 09B6;  -- 	   LOAD BLUE
+           194 : 98B1;  -- 	   OUT PXL_D
+           195 : 80CC;  -- 	   CALL wait1
+           196 : B860;  -- 	   LOADI 96
+           197 : 98B0;  -- 	   OUT PXL_A
+           198 : B80F;  -- 	   LOADI 15
+           199 : 98B8;  -- 	   OUT PXL_C
+           19A : 09B6;  -- 	   LOAD BLUE
+           19B : 98B1;  -- 	   OUT PXL_D
+           19C : 80CC;  -- 	   CALL wait1
+           19D : B891;  -- 	   LOADI 145
+           19E : 98B0;  -- 	   OUT PXL_A
+           19F : B81E;  -- 	   LOADI 30
+           1A0 : 98B8;  -- 	   OUT PXL_C
+           1A1 : 09B6;  -- 	   LOAD BLUE
+           1A2 : 98B1;  -- 	   OUT PXL_D
+           1A3 : 80D1;  -- 	   CALL wait10
+           1A4 : 80D1;  -- 	   CALL wait10
+           1A5 : 80D1;  -- 	   CALL wait10 
+           1A6 : 98B4;  -- 		OUT REFRESH ;; being updating screen again
+           1A7 : 80C4;  -- 		CALL check0
+           1A8 : 80C8;  -- 	    CALL clear
+           1A9 : 80CC;  -- 	    CALL wait1
+           1AA : 8800;  -- 		RETURN
+           1AB : 0014;  -- Twenty:    DW 20
+           1AC : 000A;  -- Ten:       DW 10
+           1AD : 0000;  -- ZERO: 	   DW &H0000
+           1AE : 0001;  -- ONE:       DW &H0001
+           1AF : 0002;  -- TWO:       DW &H0002
+           1B0 : 0004;  -- THREE:	   DW &H0004
+           1B1 : 0008;  -- FOUR:      DW &H0008
+           1B2 : 0010;  -- FIVE:	   DW &H0010
+           1B3 : 0020;  -- SIX: 	   DW &H0020
+           1B4 : 0040;  -- SEVEN:     DW &H0040
+           1B5 : 0000;  -- set24A:    DW &H0000
+           1B6 : 000F;  -- BLUE:      DW &H000F
+           1B7 : FFFF;  -- WHITE:	   DW &HFFFF
+           1B8 : F000;  -- RED: 	   DW &HF000
+           1B9 : 0800;  -- Light_RED: DW &H0800
+           1BA : E1C7;  -- BOW1:      DW &HE1C7
+           1BB : E6A7;  -- BOW2:      DW &HE6A7
+           1BC : 3F07;  -- BOW3:	   DW &H3F07
+           1BD : 3F18;  -- BOW4:	   DW &H3F18
+           1BE : 3D3C;  -- BOW5:	   DW &H3D3C
+           1BF : 3A5C;  -- BOW6:	   DW &H3A5C
+           1C0 : 01DC;  -- BOW7:	   DW &H1DC
+           1C1 : E1CB;  -- BOW8:	   DW &HE1CB
+  END;
